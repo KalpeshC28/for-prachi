@@ -3,6 +3,28 @@
   document.documentElement.classList.add('js');
   const $ = (id) => document.getElementById(id);
 
+  function startBirthdayMode() {
+    // Use India Standard Time so the surprise begins on 28 November in India.
+    const parts = new Intl.DateTimeFormat('en-IN', {
+      timeZone: 'Asia/Kolkata', day: '2-digit', month: '2-digit'
+    }).formatToParts(new Date());
+    const day = parts.find(part => part.type === 'day')?.value;
+    const month = parts.find(part => part.type === 'month')?.value;
+    if (day !== '28' || month !== '11') return;
+
+    const greeting = $('birthday-greeting');
+    if (!greeting) return;
+    greeting.classList.add('show');
+    greeting.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('birthday-mode');
+    const enter = $('enter-birthday');
+    if (enter) enter.addEventListener('click', () => {
+      greeting.classList.remove('show');
+      greeting.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('birthday-mode');
+    });
+  }
+
   function startCountdown() {
     const note = $('countdown-note');
     if (!note) return;
@@ -52,6 +74,6 @@
     });
   }
 
-  function init(){startCountdown();startReveals();startProgress();startInteractions();}
+  function init(){startBirthdayMode();startCountdown();startReveals();startProgress();startInteractions();}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
