@@ -10,7 +10,8 @@
     }).formatToParts(new Date());
     const day = parts.find(part => part.type === 'day')?.value;
     const month = parts.find(part => part.type === 'month')?.value;
-    if (day !== '28' || month !== '11') return;
+    const previewMode = new URLSearchParams(window.location.search).get('birthday-preview') === '1';
+    if (!previewMode && (day !== '28' || month !== '11')) return;
 
     const greeting = $('birthday-greeting');
     if (!greeting) return;
