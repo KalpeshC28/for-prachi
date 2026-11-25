@@ -1,19 +1,17 @@
-# for-prachi
+# Project 28 — for you, Prachi
 
-A cinematic, scroll-led romantic story built as a standalone static website.
+A birthday experience for two people born on the same date: 28 November.
 
-## Features
-- Full-screen cinematic opening
-- Scroll-triggered text and image reveals
-- Parallax image movement and chapter-style storytelling
-- Five dated milestones from the story
-- Responsive photo wall
-- Letter chapters, future chapter and final reveal
-- User-controlled soundtrack playback
-- Reduced-motion accessibility support
+## What's included
+- A cinematic opening built around the shared birthday
+- A live countdown to 28 November
+- A personal timeline of five moments from 2026
+- Three interactive birthday wishes
+- An interactive cake with candles to blow out
+- A final birthday letter and hidden message
+- Responsive layouts, scroll reveals, reading progress, and reduced-motion support
 
 ## Publish with GitHub Pages
-Open **Settings → Pages**, choose **Deploy from a branch**, select **main** and **/(root)**, then save.
+In **Settings → Pages**, choose **Deploy from a branch**, select **main** and **/(root)**, then save.
 
-## Media
-The new website references the existing public photos and soundtrack in the original `letter-for-you-` repository. This keeps the original website untouched and avoids duplicating large media files. The site code, styles and interactions are all in this repository.
+The site is a static HTML/CSS/JavaScript project. It does not require a backend or external image hosting. Google Fonts are optional; system font fallbacks are included.
