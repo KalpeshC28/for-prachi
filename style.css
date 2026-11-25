@@ -2,7 +2,7 @@
 
 /* Performance pass: preserve the look while avoiding expensive continuous paint work. */
 .grain{display:none!important;animation:none!important}
-.scroll-progress span{transform-origin:left center;will-change:transform}
+.scroll-progress span{width:100%;transform:scaleX(0);transform-origin:left center;will-change:transform}
 .story-stop .stop-image img,.photo img,.intro-image-wrap img{transition:transform .45s ease}
 .story-stop.in-view .stop-image img{transform:none}
 .photo:hover img{transform:scale(1.025)}
