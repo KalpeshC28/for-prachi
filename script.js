@@ -67,7 +67,29 @@
       }
       if(event.target.closest('#candles')){
         const stage=document.querySelector('.cake-stage'),button=$('candles');
-        if(stage&&!stage.classList.contains('blown')){stage.classList.add('blown');if(button)button.setAttribute('aria-pressed','true');const instruction=$('cake-instruction');if(instruction)instruction.textContent='wish made';}
+        if(stage&&!stage.classList.contains('blown')){
+          stage.classList.add('blown');
+          if(button)button.setAttribute('aria-pressed','true');
+          const instruction=$('cake-instruction'),done=$('cake-done');
+          if(instruction)instruction.textContent='wish made';
+          if(done)done.textContent='✨ your wish is on its way ✨';
+          const burst=document.createElement('div');
+          burst.className='cake-confetti';
+          burst.setAttribute('aria-hidden','true');
+          for(let i=0;i<28;i++){
+            const piece=document.createElement('span');
+            piece.textContent=i%3===0?'✦':(i%3===1?'✧':'•');
+            piece.style.setProperty('--x',((i*37)%100)+'%');
+            piece.style.setProperty('--delay',((i%7)*0.045)+'s');
+            piece.style.setProperty('--drift',(((i*17)%120)-60)+'px');
+            burst.appendChild(piece);
+          }
+          stage.appendChild(burst);
+          window.setTimeout(()=>{
+            const finalSection=$('final');
+            if(finalSection)finalSection.scrollIntoView({behavior:'smooth',block:'start'});
+          },1900);
+        }
         return;
       }
       const signal=event.target.closest('#signal-button');
