@@ -34,3 +34,11 @@ main{position:relative;z-index:1}.hero{min-height:100svh;position:relative;displ
 .birthday-greeting button{margin-top:42px;border:1px solid rgba(233,201,140,.7);border-radius:99px;padding:15px 25px;background:transparent;color:var(--pale);font-size:9px;letter-spacing:.17em;text-transform:uppercase;cursor:pointer;touch-action:manipulation}
 .birthday-greeting button:hover{background:var(--gold);color:#10172b}
 @media(prefers-reduced-motion:reduce){.birthday-greeting{transition:none}}
+
+/* Candle-blow celebration and transition to the personal birthday note. */
+.cake-confetti{position:absolute;inset:8% 0 24%;z-index:8;pointer-events:none;overflow:visible}
+.cake-confetti span{position:absolute;left:var(--x);top:48%;font-size:clamp(13px,2.5vw,23px);color:var(--gold);text-shadow:0 0 12px rgba(233,201,140,.55);opacity:0;animation:confetti-fly 1.65s ease-out var(--delay) forwards}
+.cake-confetti span:nth-child(3n){color:#d9a8b6}
+.cake-confetti span:nth-child(3n + 1){color:#b8c9ee}
+@keyframes confetti-fly{0%{opacity:0;transform:translate3d(0,0,0) scale(.4) rotate(0)}12%{opacity:1}100%{opacity:0;transform:translate3d(var(--drift),-190px,0) scale(1.15) rotate(190deg)}}
+@media(prefers-reduced-motion:reduce){.cake-confetti span{animation:none;opacity:1}}
