@@ -4,26 +4,34 @@
   const $ = (id) => document.getElementById(id);
 
   function startBirthdayMode() {
-    // Use India Standard Time so the surprise begins on 28 November in India.
-    const parts = new Intl.DateTimeFormat('en-IN', {
-      timeZone: 'Asia/Kolkata', day: '2-digit', month: '2-digit'
-    }).formatToParts(new Date());
-    const day = parts.find(part => part.type === 'day')?.value;
-    const month = parts.find(part => part.type === 'month')?.value;
+    // Check India Standard Time repeatedly, so a page already open before midnight switches too.
     const previewMode = new URLSearchParams(window.location.search).get('birthday-preview') === '1';
-    if (!previewMode && (day !== '28' || month !== '11')) return;
-
-    const greeting = $('birthday-greeting');
-    if (!greeting) return;
-    greeting.classList.add('show');
-    greeting.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('birthday-mode');
-    const enter = $('enter-birthday');
-    if (enter) enter.addEventListener('click', () => {
-      greeting.classList.remove('show');
-      greeting.setAttribute('aria-hidden', 'true');
-      document.body.classList.remove('birthday-mode');
-    });
+    let greetingShown = false;
+    const checkBirthday = () => {
+      const parts = new Intl.DateTimeFormat('en-IN', {
+        timeZone: 'Asia/Kolkata', day: '2-digit', month: '2-digit'
+      }).formatToParts(new Date());
+      const day = parts.find(part => part.type === 'day')?.value;
+      const month = parts.find(part => part.type === 'month')?.value;
+      if (!previewMode && (day !== '28' || month !== '11')) return;
+      document.documentElement.classList.add('birthday-colors');
+      document.body.classList.add('birthday-colors');
+      if (greetingShown) return;
+      const greeting = $('birthday-greeting');
+      if (!greeting) return;
+      greetingShown = true;
+      greeting.classList.add('show');
+      greeting.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('birthday-mode');
+      const enter = $('enter-birthday');
+      if (enter) enter.addEventListener('click', () => {
+        greeting.classList.remove('show');
+        greeting.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('birthday-mode');
+      }, {once:true});
+    };
+    checkBirthday();
+    window.setInterval(checkBirthday, 10000);
   }
 
   function startCountdown() {
