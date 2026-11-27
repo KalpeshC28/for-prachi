@@ -42,3 +42,25 @@ main{position:relative;z-index:1}.hero{min-height:100svh;position:relative;displ
 .cake-confetti span:nth-child(3n + 1){color:#b8c9ee}
 @keyframes confetti-fly{0%{opacity:0;transform:translate3d(0,0,0) scale(.4) rotate(0)}12%{opacity:1}100%{opacity:0;transform:translate3d(var(--drift),-190px,0) scale(1.15) rotate(190deg)}}
 @media(prefers-reduced-motion:reduce){.cake-confetti span{animation:none;opacity:1}}
+
+
+/* Birthday palette: switches automatically at midnight IST on 28 November. */
+html.birthday-colors{background:#160d1c}
+body.birthday-colors{--night:#160d1c;--deep:#211126;--panel:#2c1830;--gold:#f3c6a5;--pale:#fff0e8;--muted:#d0adbd;--blue:#d69bb6;background:#160d1c;color:#fff0e8}
+body.birthday-colors:before{background:radial-gradient(ellipse at 18% 15%,rgba(180,91,135,.2),transparent 42%),radial-gradient(ellipse at 85% 80%,rgba(243,198,165,.13),transparent 42%)}
+body.birthday-colors .hero{background:radial-gradient(ellipse at 74% 50%,rgba(168,91,137,.25),transparent 44%)}
+body.birthday-colors .alignment{background:linear-gradient(180deg,#211126,#29152b)}
+body.birthday-colors .alignment-card{border-color:rgba(243,198,165,.3);background:linear-gradient(120deg,rgba(86,43,75,.85),rgba(42,24,48,.8))}
+body.birthday-colors .chapters{background:linear-gradient(180deg,#29152b,#160d1c)}
+body.birthday-colors .wishes{background:#160d1c}
+body.birthday-colors .wish-card{background:linear-gradient(145deg,rgba(86,43,75,.72),rgba(39,22,44,.88));border-color:rgba(243,198,165,.25)}
+body.birthday-colors .wish-card:hover,body.birthday-colors .wish-card.active{background:linear-gradient(145deg,rgba(121,61,91,.78),rgba(53,27,53,.92))}
+body.birthday-colors .wish-reveal{background:rgba(86,43,75,.45)}
+body.birthday-colors .cake-section{background:radial-gradient(ellipse at 75% 50%,rgba(180,91,135,.22),transparent 45%),#211126}
+body.birthday-colors .final{background:radial-gradient(ellipse at 50% 42%,rgba(180,91,135,.25),transparent 46%),#160d1c}
+body.birthday-colors .site-footer{background:#100914;border-color:rgba(243,198,165,.2)}
+body.birthday-colors .topbar{border-color:rgba(243,198,165,.22)}
+body.birthday-colors .orbit{border-color:rgba(243,198,165,.25)}
+body.birthday-colors .planet-k{background:radial-gradient(circle at 30% 25%,#f2c2d5,#b66b91 48%,#60334f)}
+body.birthday-colors .sun,.birthday-colors .final-orb{background:radial-gradient(circle at 35% 30%,#fff2df,#f0b88e 44%,#ad6681);color:#351d32}
+body.birthday-colors .birthday-greeting{background:radial-gradient(ellipse at 50% 45%,rgba(180,91,135,.38),transparent 52%),#160d1c}
